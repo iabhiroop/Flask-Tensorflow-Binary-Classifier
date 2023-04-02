@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+    <style>
+    .center-element {
+        width: 50%; /* Set the width of the element */
+        margin: 0 auto; /* Center the element horizontally */
+        text-align: center; /* Center the content of the element */
+      }
+      </style>
+  </head>
+  <body>
+    <h1 class="center-element" style="color:#D22B2B;">Cat and Dog Classifier Result</h1>
+<br><br><br><br><br>
+<br><br>
+<div class="center-element">
+    <img src="{{ img }}" alt="My Image"><br><br>
+    <p>The image is most like a {{res}}.</p>
+    <br><br><br>
+    <button onclick="window.location.href='/retry'">New Image</button>
+    <br><br>
+    <button onclick="window.location.href='/logout'">Logout</button>
+</div>
+  </body>
+</html>

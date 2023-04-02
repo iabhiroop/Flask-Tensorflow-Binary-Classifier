@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style>
+		body {
+			background-image: url({{url_for('static',filename = '/download.jpg')}})
+			/* background-size: cover; */
+		}
+		h1 {
+		margin:0 0 50px 0;
+    padding:10px;
+    text-align:center;
+    font-size:30px;
+    color:darken(#e5e5e5, 50%);
+    border-bottom:solid 1px #e5e5e5;
+		}
+		form {
+			margin: auto;
+			padding: 4em 4em 2em;
+			max-width: 400px;
+			margin: 50px auto 0;
+			box-shadow: 0 0 1em #222;
+			border-radius: 2px;
+		}
+		label {
+			display: block;
+			font-family: "Arial", sans-serif;
+			font-size: 20px;
+			margin-top: 10px;
+		}
+		input[type="text"], input[type="password"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 3px solid #0080ff;
+			border-radius: 4px;
+		}
+		button {
+			background-color: #0080ff;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			border-radius: 4px;
+			font-size: 20px;
+			font-family: "Arial", sans-serif;
+			box-shadow: 2px 2px 2px black;
+		}
+		button:hover {
+			background-color: #0059b3;
+			color: #e6f5ff;
+			box-shadow: none;
+		}
+		.signup {
+			text-align: center;
+			font-size: 20px;
+			margin-top: 20px;
+			font-family: "Arial", sans-serif;
+			color: #0080ff;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.signup:hover {
+			color: #0059b3;
+		}
+		.signup:hover + #login-link {
+			color: #0059b3;
+			text-decoration: underline;
+		}
+	</style>
+	<script>
+		function showSignup() {
+			document.getElementById("login-form").style.display = "none";
+			document.getElementById("signup-form").style.display = "block";
+		}
+	</script>
+</head>
+<body>
+	<h1>Login Page</h1>
+	<form id="login-form" action="{{url_for('login')}}" method="post">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+		<button type="submit">Login</button>
+		<div class="signup" onclick="showSignup()">Don't have an account? Sign up!</div>
+	</form>
+	<form id="signup-form" style="display:none;" action="{{url_for('signup')}}" method="post">
+		<label for="email">Email:</label>
+		<input type="text" id="email" name="email" placeholder="Enter your email" required>
+
+		<label for="new-username">Enter a new username:</label>
+        <input type="text" id="new-username" name="new-username" placeholder="Choose a username" required>
+    
+        <label for="new-password">Enter a new password:</label>
+        <input type="password" id="new-password" name="new-password" placeholder="Enter a new password" required>
+    
+        <button type="submit">Sign Up</button>
+        <div class="signup" onclick="document.getElementById('signup-form').style.display='none'; document.getElementById('login-form').style.display='block'">Already have an account? <span id="login-link">Login!</span></div>
+    </form>
+    <div><br>
+        <a>{{ msg }}</a>
+    </div>
+</body>
+</html>

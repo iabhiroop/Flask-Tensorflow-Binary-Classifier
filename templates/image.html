@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Image Upload</title>
+<style>
+      body{
+            background-image:url({{ url_for('static', filename='download.jpg') }});
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-size: 100% 100%;
+        }
+
+.center-element {
+        width: 50%; /* Set the width of the element */
+        margin: 0 auto; /* Center the element horizontally */
+        text-align: center; /* Center the content of the element */
+      }
+    </style>
+  </head>
+  <body>
+<h1 class="center-element" style="color:#D22B2B;">Cat and Dog Classifier</h1>
+<br><br><br><br><br>
+<br><br>
+
+<br><br><br>
+<div class="center-element">
+    <form action="{{url_for('upload_submit')}}" method = "post" enctype = "multipart/form-data" class="center">
+    <input type = "file" name = "imgInp"  accept="image/*"  id="imgInp" />
+    <br><br>
+    <img id="blah" src="#" alt="your image" />
+  <br><br>    
+  <label>Submit image</label>
+    <input type = "submit"/>
+</form>
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>
+</div>
+<!-- <a>{{ data }}</a> -->
+  </body>
+</html>
